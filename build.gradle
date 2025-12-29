@@ -11,6 +11,11 @@ application {
     mainClass = project.hasProperty('mainClass') ? project.property('mainClass') : 'HelloLangChain4j'
 }
 
+// Enable standard input for interactive programs
+run {
+    standardInput = System.in
+}
+
 repositories {
     mavenCentral()
 }
