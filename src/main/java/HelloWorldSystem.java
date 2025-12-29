@@ -14,7 +14,7 @@ public class HelloWorldSystem {
 
         ChatModel cmodel = OpenAiChatModel.builder()
                 .apiKey(System.getenv("OPENAI_API_KEY"))
-                .modelName(OpenAiChatModelName.GPT_4_O)
+                .modelName(OpenAiChatModelName.GPT_3_5_TURBO) // or GPT_4
                 .temperature(.3)                        // keep randomness low
                 .timeout(Duration.ofSeconds(120))       // network timeout is 2 min
                 .maxTokens(512)                         // keep data charges low

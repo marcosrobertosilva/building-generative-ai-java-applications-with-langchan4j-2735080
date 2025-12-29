@@ -1,9 +1,15 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
+
+// Set the main class via command line: ./gradlew run -PmainClass=HelloWorldSystem
+application {
+    mainClass = project.hasProperty('mainClass') ? project.property('mainClass') : 'HelloLangChain4j'
+}
 
 repositories {
     mavenCentral()
