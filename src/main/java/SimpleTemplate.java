@@ -12,7 +12,7 @@ public class SimpleTemplate {
     public static void main(String[] args) {
         ChatModel cmodel = OpenAiChatModel.builder()
                 .apiKey(System.getenv("OPENAI_API_KEY"))
-                .modelName(OpenAiChatModelName.GPT_4_O)
+                .modelName(OpenAiChatModelName.GPT_3_5_TURBO) // you can also use GPT_4
                 .temperature(.3)                    // keep randomness low
                 .timeout(Duration.ofSeconds(120))
                 .maxTokens(1024)
