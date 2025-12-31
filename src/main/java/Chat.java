@@ -1,7 +1,5 @@
-import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatModel;
-import dev.langchain4j.model.openai.OpenAiChatModel;
-import dev.langchain4j.model.openai.OpenAiChatModelName;
+import dev.langchain4j.model.ollama.OllamaChatModel;
 
 import java.util.Scanner;
 
@@ -10,9 +8,9 @@ public class Chat {
         Scanner userinput;      // user inputted line as a Scanner
         String cmdline;
 
-        ChatModel cmodel = OpenAiChatModel.builder()
-                .apiKey(System.getenv("OPENAI_API_KEY"))
-                .modelName(OpenAiChatModelName.GPT_4_O)
+        ChatModel cmodel = OllamaChatModel.builder()
+                .baseUrl("http://localhost:11434")
+                .modelName("marcos_model")
                 .build();
 
         while (true) {
@@ -24,10 +22,9 @@ public class Chat {
             if (cmdline.isBlank())       // If nothing, do nothing
                 continue;
 
-            UserMessage usrmsg = UserMessage.from(cmdline);   // create the prompt
-            var answer = cmodel.chat(usrmsg);                 // send the prompt and save the response
+            String answer = cmodel.chat(cmdline);   // send the prompt and save the response
 
-            System.out.println(answer.aiMessage().text());
+            System.out.println(answer);
         }
     }
 }
